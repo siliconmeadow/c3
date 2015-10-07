@@ -13,10 +13,21 @@
     <script src="/js/d3.js" charset="utf-8"></script>
     <script src="/js/c3.js"></script>
     <script>
-//      var en_GB = {
-//        "currency": ["£"], 
-//      }
-//      var GB = d3.locale("en-GB");
+      var en_GB = {
+        "decimal": ".",
+        "thousands": ",",
+        "grouping": [3],
+        "currency": ["£", ""],
+        "dateTime": "%a %b %e %X %Y",
+        "date": "%m/%d/%Y",
+        "time": "%H:%M:%S",
+        "periods": ["AM", "PM"],
+        "days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "shortDays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        "shortMonths": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+      }
+      var GB = d3.locale("en_GB");
       var chart = c3.generate({
         data: {
           columns: [
@@ -33,8 +44,8 @@
 //            return value;
 //            },
               format: function(value, ratio) {
-                return d3.format("$")(value);
-//                return d3.format(GB.currency("£"))(value);
+//                return d3.format("$")(value);
+                return d3.format(GB.numberFormat("£")(value);
               },
 //          show: false // to turn off the min/max labels.
           },
@@ -86,7 +97,7 @@
           bindto: '#chart3',
           data: {
               columns: [
-                  ['data', -75.0]
+                                  ['data', -75.0]
               ],
               type: 'gauge',
           },
@@ -127,7 +138,6 @@
             .transition()
             .style('fill', '#e0e0e0');
         }, 5000);
-
         setTimeout(function () {
             chart.load({
               columns: [[ 'data', 0 ]]
@@ -172,7 +182,7 @@
 
         setTimeout(function () {
             chart.load({
-              columns: [[ 'data', 50 ]]
+                            columns: [[ 'data', 50 ]]
             });
         }, 13000);
 
